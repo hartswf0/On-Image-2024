@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Conference Schedule</title>
+    <style>
+        :root {
+            --coral: #f47c65;
+            --burgundy: #732f43;
+            --light-coral: #fde8e4;
+            --light-gray: #f5f5f5;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .header {
+            background: var(--coral);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .date-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .date-btn {
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            flex: 1;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .date-btn.active {
+            background: white;
+            color: var(--burgundy);
+        }
+
+        .schedule {
+            padding: 1rem;
+            padding-bottom: 4rem;
+        }
+
+        .event {
+            border-left: 4px solid var(--burgundy);
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 0 0.5rem 0.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .time {
+            color: var(--burgundy);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .title {
+            font-weight: bold;
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .details {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .break {
+            background: var(--light-coral);
+            border-left-color: var(--coral);
+        }
+
+        .plenary {
+            border-left-color: var(--coral);
+            background: var(--light-gray);
+        }
+
+        .sub-event {
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid #ddd;
+            margin-top: 0.5rem;
+        }
+
+        .sub-event .time {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .moderator {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .language-tag {
+            display: inline-block;
+            background: var(--light-coral);
+            color: var(--burgundy);
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .join-btn {
+            display: inline-block;
+            background: var(--burgundy);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+    <script>
+        function showDay(day) {
+            const day1 = document.getElementById('day1');
+            const day2 = document.getElementById('day2');
+            const buttons = document.querySelectorAll('.date-btn');
+
+            if (day === 1) {
+                day1.style.display = 'block';
+                day2.style.display = 'none';
+            } else {
+                day1.style.display = 'none';
+                day2.style.display = 'block';
+            }
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[day - 1].classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Images and Imaginaries of AI</h1>
+        <div class="date-selector">
+            <button class="date-btn active" onclick="showDay(1)">October 24</button>
+            <button class="date-btn" onclick="showDay(2)">October 25</button>
+        </div>
+    </div>
+
+    <div id="day1" class="schedule">
+        <div class="event">
+            <div class="time">8:00 - 9:00 AM</div>
+            <div class="title">Conference Registration Desk Open and Welcome Coffee</div>
+            <div class="details">Location: CMD - Centro Metropolitano de Diseño Calle Algarrobo 1041, C1293ABA (Buenos Aires, Argentina)</div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event">
+            <div class="time">9:00 - 9:30 AM</div>
+            <div class="title">Conference Opening</div>
+            <div class="details">
+                Location: CMD - Centro Metropolitano de Diseño Calle Algarrobo 1041, C1293ABA (Buenos Aires, Argentina)
+                <ul>
+                    <li>Speaker: Ana Sedeño-Valdellos, University of Malaga, Spain</li>
+                    <li>Speaker: Eric Freedman, Truman State University, USA</li>
+                    <li>Speaker: Miguel Angel Almiron, University Paris 1 Panthéon-Sorbonne, France</li>
+                    <li>Speaker: Fernando Bóveda, Universidad Abierta Interamericana, Argentina</li>
+                    <li>Moderator: Marcelo De Vincenzi, Universidad Abierta Interamericana, Argentina</li>
+                </ul>
+            </div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event plenary">
+            <div class="time">9:30 - 10:30 AM</div>
+            <div class="title">Plenary Session and Discussion with Javier González Pagliere Llauro</div>
+            <div class="details">
+                "What Digital Content and Media Do Students Consume at the Faculty of Communication Sciences at the UAI"
+                <ul>
+                    <li>Speaker: Javier González Pagliere Llauro, Associate Professor, Interamerican Open University, Argentina</li>
+                    <li>Moderator: Fernando Amdan, Comisión de Educación de INTERACT ARGENTINA, Argentina</li>
+                </ul>
+            </div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event break">
+            <div class="time">10:30 - 10:50 AM</div>
+            <div class="title">Coffee Break</div>
+        </div>
+
+        <div class="event">
+            <div class="time">10:50 - 11:35 AM</div>
+            <div class="title">Talking Circle: 2024 Special Focus - Images and Imaginaries of Artificial Intelligence</div>
+            <div class="moderator">Moderator: Ezgi Balkanay, Montana State University, USA</div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event break">
+            <div class="time">11:35 - 11:45 AM</div>
+            <div class="title">Transition Break</div>
+        </div>
+
+        <div class="event">
+            <div class="time">11:45 AM - 1:00 PM</div>
+            <div class="title">Real and Imagined</div>
+            <div class="moderator">Moderator: Gabriel A. Medina-Aguilar, Universidad Anáhuac Querétaro, México</div>
+            <div class="sub-event">
+                <div class="time">11:45 AM</div>
+                <div class="title">AI-generated Images on the Palimpsest of an Old Face</div>
+                <div class="details">Shima Sahranavard, Ph.D. Student, University of Minnesota, USA</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">12:05 PM</div>
+                <div class="title">Developing a Unified Visual Vocabulary for Contemporary Image-Making</div>
+                <div class="details">Phillip Hanson, Saginaw Valley State University, USA; J. Blake Johnson, Saginaw Valley State University, USA</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">12:25 PM</div>
+                <div class="title">On Algorithmic and Octopian Form: Or, Can Computer Vision Rid Itself of Its Bones?</div>
+                <div class="details">Lily Cannelle Mathieu, Doctorate in Socio-Cultural Anthropology, McGill University, Canada</div>
+            </div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event break">
+            <div class="time">1:00 - 2:00 PM</div>
+            <div class="title">Lunch</div>
+        </div>
+
+        <div class="event plenary">
+            <div class="time">1:50 - 2:50 PM</div>
+            <div class="title">Plenary Session and Discussion with Cecilia Mosto</div>
+            <div class="details">
+                "El trasvasamiento generacional en los hábitos de consumo de información y su impacto en la construcción de imagen"
+                <ul>
+                    <li>Speaker: Cecilia Mosto, Open Interamerican University, Argentina</li>
+                    <li>Moderator: Adrián Arroyo, Universidad Abierta Interamericana, Argentina</li>
+                </ul>
+            </div>
+            <span class="language-tag">In Spanish</span>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event">
+            <div class="time">2:00 - 3:15 PM</div>
+            <div class="title">Views and Reviews</div>
+            <div class="moderator">Moderator: Ezgi Balkanay, Montana State University, USA</div>
+            <div class="sub-event">
+                <div class="time">2:00 PM</div>
+                <div class="title">Irony from Television to Social Media: Persuasive Strategies through ‘Intertextual Irony’</div>
+                <div class="details">Federica Ruggiero, PhD Student, Sapienza University of Rome, Italy</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">2:20 PM</div>
+                <div class="title">Analyzing Cinematic Images of Horses in Heartstone: The Potential for Healing and Hope</div>
+                <div class="details">Kylo-Patrick Hart, Texas Christian University, USA</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">2:40 PM</div>
+                <div class="title">'More Dirty Pictures': Archive, Video, and Memory in Barbara Hammer's Work</div>
+                <div class="details">Enzo Caramori, Sao Paulo State University (UNESP), Brazil; Regilene Aparecida Sarzi Ribeiro, Universidade Estadual Paulista, Brazil</div>
+            </div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event break">
+            <div class="time">3:15 - 3:25 PM</div>
+            <div class="title">Transition Break</div>
+        </div>
+
+        <div class="event">
+            <div class="time">3:25 - 5:05 PM</div>
+            <div class="title">Changing Times</div>
+            <div class="moderator">Moderator: Enzo Caramori, Sao Paulo State University, Brazil</div>
+            <div class="sub-event">
+                <div class="time">3:25 PM</div>
+                <div class="title">Infested: The Manifestation of Discrimination Infestation</div>
+                <div class="details">Saral Surakul, University of Georgia, USA</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">3:45 PM</div>
+                <div class="title">Mourning in the Optative Mood: The Case of the Eleusis Amphora</div>
+                <div class="details">Dena Gilby, Endicott College, USA</div>
+            </div>
+            <div class="sub-event">
+                <div class="time">4:05 PM</div>
+                <div class="title">Staging Death and Photography: The Intimate Association between Photographic Images and Death</div>
+                <div class="details">Roddy MacInnes, University of Denver, USA</div>
+            </div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event plenary">
+            <div class="time">3:50 - 4:50 PM</div>
+            <div class="title">Plenary Session and Discussion with Ana María Sedeño Valdellós</div>
+            <div class="details">
+                "Técnicas de Inteligencia artificial aplicadas a la creación audiovisual y las artes escénicas: videoescena, videoclip y otras dramaturgias visuales"
+                <ul>
+                    <li>Speaker: Ana Sedeño-Valdellos, University of Malaga, Spain</li>
+                    <li>Moderator: María de las Mercedes Sagardoyburu, Universidad Abierta Interamericana, Argentina</li>
+                </ul>
+            </div>
+            <span class="language-tag">In Spanish</span>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event">
+            <div class="time">5:10 - 5:40 PM</div>
+            <div class="title">Networking Session: Finding Common Ground</div>
+            <div class="details">2024 Special Focus - Images and Imaginaries of Artificial Intelligence</div>
+            <div class="moderator">Moderator: Gabriel A. Medina-Aguilar, Universidad Anáhuac Querétaro, México</div>
+            <a href="https://cgscholar.com/cg_event/events/X24en/schedule" class="join-btn">Join</a>
+        </div>
+
+        <div class="event">
+            <div class="time">7:00 - 9:00 PM</div>
+            <div class="title">Conference Dinner: Cabernet Restaurant</div>
+            <div class="details">Location: Jorge Luis Borges 1757 (Not included in registration rate. Book your spot from “Special Events”)</div>
+        </div>
+    </div>
+
+    <div id="day2" class="schedule" style="display: none">
+        <!-- Day 2 schedule goes here -->
+    </div>
+</body>
+</html>
